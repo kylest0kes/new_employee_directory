@@ -33,11 +33,22 @@ export default class App extends Component {
           .catch(err => console.log(err));
   }
 
+  filteredSearch = (searchName) => {
+    const filtered = this.state.employees.filter((employee) => {
+      return (employee.name.first.startsWith(searchName) || employee.name.last.startsWith(searchName))
+    });
+    this.setState({
+      filteredEmployees: filtered
+    })
+  }
+
   handleInputChange = event => {
       const name = event.target.name;
       const value = event.target.value;
       this.setState({
         [name]: value
+      }, () => {
+        this.filteredSearch(this.state.search)
       });
   };
 
@@ -46,11 +57,23 @@ export default class App extends Component {
   this.searchEmployees(this.state.search);
   };
 
+  genderFilter = (gender) => {
+    const filtered = this.state.employees.filter((employee) => {
+      return (employee.gender === gender)
+    });
+    this.setState({
+      filteredEmployees: filtered
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <SearchBar />
+        <SearchBar 
+        handleInputChange={this.handleInputChange}
+        genderFilter={this.genderFilter}
+        />
         <EmployeeTable 
           employees={this.state.filteredEmployees}
         />

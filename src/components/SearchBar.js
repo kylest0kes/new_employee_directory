@@ -19,10 +19,20 @@ export default function SearchBar(props) {
                 </button>
                 <br/>
                 <br/>
-                <button>
+                <button 
+                name="male"
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.genderFilter("male")
+                } }>
                     Male
                 </button>
-                <button>
+                <button 
+                name="female"
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.genderFilter("female")
+                    }}>
                     Female
                 </button>
             </div>
