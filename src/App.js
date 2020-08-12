@@ -52,10 +52,7 @@ export default class App extends Component {
       });
   };
 
-  handleFormSubmit = event => {
-  event.preventDefault();
-  this.searchEmployees(this.state.search);
-  };
+  
 
   genderFilter = (gender) => {
     const filtered = this.state.employees.filter((employee) => {
