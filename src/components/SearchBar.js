@@ -5,6 +5,7 @@ export default function SearchBar(props) {
         <form>
             <div className="form-group">
                 <input
+                style={{width:'200px'}}
                 onChange={props.handleInputChange}
                 value={props.value}
                 name="search"
@@ -15,7 +16,7 @@ export default function SearchBar(props) {
                 />
                 <br />
                 <button onClick={props.handleFormSubmit} className="btn btn-primary">
-                Search
+                Refresh List
                 </button>
                 <br/>
                 <br/>
